@@ -54,4 +54,3 @@ ll.print();
 ll.addToFront(15);
 console.log("\nLinked list after Add to Front");
 ll.print();
-console.log("Testing commit");
