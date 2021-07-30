@@ -37,6 +37,44 @@ class List {
         this.head = ref
     }
 
+    deleteValue(value) {
+
+        if(value == this.head.value) {
+            this.head = this.head.next;
+            return;
+        }
+
+        // let current = this.head;
+        let backPointer= this.head;
+        // while(current.value != value)
+        //     backPointer = current;
+        //     current = current.next;
+
+        // backPointer.next = current.next;
+        
+        for (let current = this.head; current; current = current.next) {
+            
+            if(current.value == value) {
+                if(current == this.head) {
+                    this.head = this.head.next;
+                    return;
+                }
+
+                if(current == this.tail) {
+                    this.tail = backPointer;
+                    this.tail.next = null;
+                    return;
+                }
+                backPointer.next = current.next
+                return;
+            }
+            backPointer = current;
+           
+        }
+
+        console.log("Value Not found");
+        return;
+    }
     print() {
         for (let current = this.head; current ; current = current.next) {
             console.log(current.value);
@@ -53,4 +91,11 @@ ll.print();
 
 ll.addToFront(15);
 console.log("\nLinked list after Add to Front");
+ll.print();
+
+ll.deleteValue(10);
+ll.deleteValue(15);
+ll.deleteValue(14);
+ll.deleteValue(12);
+console.log("After delete");
 ll.print();

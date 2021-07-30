@@ -114,6 +114,46 @@ class DoublyLinkedList {
         return;
     }
 
+    deleteValue(value) {
+
+        if(!this.head) {
+            console.log("Head is not there");
+            return;
+        }
+
+        for (let current = this.head; current ; current = current.next) {
+            
+            if(current.value == value) {
+                //? Edge case 1 where only one node
+                if(this.head === this.tail) {
+                    this.head = null;
+                    this.tail = null;
+                    return;
+                }
+
+                //? Edge case when current is the head
+                if(this.head === current) {
+                    this.head = this.head.next;
+                    // current.next.prev = null;
+                    this.head.prev = null;
+                    return;
+                }
+
+                //? Edge case where current is the tail
+                if(this.tail === current) {
+                    this.tail = this.tail.prev;
+                    this.tail.next = null;
+                    return;
+                }
+                current.prev.next = current.next;
+                current.next.prev = current.prev;
+            }
+            
+        }
+
+        console.log("Value not found");
+    }
+
     printForward() {
         for (let current =  this.head; current ; current = current.next) {
             console.log(`Previous ${current.prev?.value}, Current value ${current.value}, Next ${current.next?.value}, Type: ${current == this.head? 'Head' : current == this.tail? 'Tail': 'Node'}`);
@@ -149,3 +189,16 @@ dll.printForward();
 dll.insertBefore(9, 8);
 console.log("After insert before");
 dll.printForward();
+dll.deleteValue(19);
+dll.deleteValue(15);
+dll.deleteValue(8);
+dll.deleteValue(9);
+dll.deleteValue(10);
+dll.deleteValue(12);
+dll.deleteValue(14);
+dll.deleteValue(13);
+
+console.log("After delete");
+dll.printForward();
+
+

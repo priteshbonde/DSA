@@ -82,7 +82,32 @@ class DoubleList:
         current.prev.next.next = current
         current.prev = current.prev.next
 
-    
+    def deleteValue(self, value):
+        current = self.head
+        while(current.value != value):
+            if(current.next == None):
+                print("Value not found", value)
+                return
+            current = current.next
+
+        if(self.head == self.tail):
+            self.head = None
+            self.tail = None
+            return
+
+        if(current == self.head):
+            self.head = self.head.next
+            self.head.prev = None
+            return
+
+        if(current == self.tail):
+            self.tail = self.tail.prev
+            self.tail.next = None
+            return
+
+        current.prev.next = current.next
+        current.next.prev = current.prev
+
 dll = DoubleList()
 dll.addToBack(10)
 dll.addToBack(12)
@@ -99,5 +124,19 @@ dll.printForward()
 dll.insertBefore(9, 8)
 dll.printForward()
 
+# dll.deleteValue(12)
+dll.printForward()
+
+dll.printForward()
+dll.deleteValue(19)
+dll.deleteValue(15)
+dll.deleteValue(8)
+dll.deleteValue(9)
+dll.deleteValue(10)
+dll.deleteValue(12)
+dll.deleteValue(14)
+dll.deleteValue(13)
+print('After Delete')
+dll.printForward()
         
 
