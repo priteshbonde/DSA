@@ -80,22 +80,33 @@ class List {
             console.log(current.value);
         }
     }
+
+    printBackward(node) {
+        if(!node) {
+            return;
+        }
+
+        this.printBackward(node.next);
+        console.log(node.value);
+    }
 }
 // scriptcs
 let ll = new List();
 ll.addToBack(10);
 ll.addToBack(12);
 ll.addToBack(14);
-console.log("\nLinked list after Add to back");
-ll.print();
+// console.log("\nLinked list after Add to back");
+// ll.print();
 
-ll.addToFront(15);
-console.log("\nLinked list after Add to Front");
-ll.print();
+// ll.addToFront(15);
+// console.log("\nLinked list after Add to Front");
+// ll.print();
 
-ll.deleteValue(10);
-ll.deleteValue(15);
-ll.deleteValue(14);
-ll.deleteValue(12);
-console.log("After delete");
-ll.print();
+// ll.deleteValue(10);
+// ll.deleteValue(15);
+// ll.deleteValue(14);
+// ll.deleteValue(12);
+// console.log("After delete");
+// ll.print();
+
+ll.printBackward(ll.head);

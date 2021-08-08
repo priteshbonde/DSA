@@ -58,21 +58,30 @@ class List:
         return
 
         
+    def printForward(self, node):
+        if(node == None):
+            return
+
+        self.printForward(node.next)
+        print(node.value)
+    
 
 ll = List()
 ll.addToBack(10)
 ll.addToBack(12)
 ll.addToBack(14)
-print('\nAfter Add to back')
-ll.print()
+# print('\nAfter Add to back')
+# ll.print()
 
-ll.addToFront(15)
-print('\nAfter Add to front')
-ll.print()
+# ll.addToFront(15)
+# print('\nAfter Add to front')
+# ll.print()
 
-ll.deleteValue(10)
-ll.deleteValue(12)
-ll.deleteValue(14)
-ll.deleteValue(15)
-print("After Delete")
-ll.print()
+# ll.deleteValue(10)
+# ll.deleteValue(12)
+# ll.deleteValue(14)
+# ll.deleteValue(15)
+# print("After Delete")
+# ll.print()
+
+ll.printForward(ll.head)

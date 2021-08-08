@@ -1,2 +1,2 @@
-console.log("ForwarPrint");
-// dll.printForward();
+current.previous.next = newNode;
+        // current.previous = newNode;
